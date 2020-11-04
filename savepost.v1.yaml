@@ -174,5 +174,103 @@ paths:
               type: object
               properties: {}
         description: ''
+  /session.php:
+    post:
+      summary: 'login {uname:"username", upass:"password"}'
+      tags: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            kpu:
+              schema:
+                type: string
+              description: cookies isi berupa id session php
+            nama:
+              schema:
+                type: string
+              description: cookies nama petugas yang login
+            petugas:
+              schema:
+                type: string
+              description: 'cookies id petugas, di server juga diciptakan session idpetugas'
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  calon:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      required:
+                        - id
+                        - nama
+                        - pathgbr
+                      properties:
+                        id:
+                          type: string
+                          minLength: 1
+                        nama:
+                          type: string
+                          minLength: 1
+                        ket: {}
+                        pathgbr:
+                          type: string
+                          minLength: 1
+                  haksurat:
+                    type: object
+                    properties:
+                      idpetugas:
+                        type: string
+                        minLength: 1
+                      nama:
+                        type: string
+                        minLength: 1
+                      kode:
+                        type: string
+                        minLength: 1
+                      namatps:
+                        type: string
+                        minLength: 1
+                      dummy_hakdpt_lk:
+                        type: number
+                      dummy_hakdpt_pr:
+                        type: number
+                      dummy_hakdptb_lk:
+                        type: number
+                      dummy_hakdptb_pr:
+                        type: number
+                      dummy_hakdpk_lk:
+                        type: number
+                      dummy_hakdpk_pr:
+                        type: number
+                      dummy_disab_hak_lk:
+                        type: number
+                      dummy_disab_hak_pr:
+                        type: number
+                      totsurat:
+                        type: number
+                    required:
+                      - idpetugas
+                      - nama
+                      - kode
+                      - namatps
+                      - dummy_hakdpt_lk
+                      - dummy_hakdpt_pr
+                      - dummy_hakdptb_lk
+                      - dummy_hakdptb_pr
+                      - dummy_hakdpk_lk
+                      - dummy_hakdpk_pr
+                      - dummy_disab_hak_lk
+                      - dummy_disab_hak_pr
+                      - totsurat
+                required:
+                  - calon
+                  - haksurat
+      operationId: post-session.php
+      description: ''
 components:
   schemas: {}
