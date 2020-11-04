@@ -20,75 +20,104 @@ paths:
               description: ''
               type: object
               properties:
-                hptpr:
-                  type: number
-                hptbpr:
-                  type: number
-                dpdislk:
-                  type: number
-                dpdispr:
-                  type: number
-                hptlk:
-                  type: number
-                suara:
-                  type: string
-                  minLength: 1
-                pil1:
-                  type: number
-                pil2:
-                  type: number
-                hpkpr:
-                  type: number
-                dpklk:
-                  type: number
-                hpklk:
-                  type: number
-                suararusak:
-                  type: number
-                hptblk:
-                  type: number
                 kodepet:
                   type: string
                   minLength: 1
-                hpdispr:
-                  type: number
+                  description: |-
+                    kodepetugas abcdefghijklmno :
+                    ab adalah kode propinsi berupa hexadisimal
+                    cd adalah kode kota berupa hexadisimal
+                    ef adalah kode kec berupa hexadisimal
+                    gh adalah kode kelurahan berupa hexadisimal
+                    ijkl adalah kode tps berupa desimal
+                    mno adalah kode petugas per tps mulai dari 000 s/d 999 berupa desimal
                 dptlk:
                   type: number
-                dpkpr:
-                  type: number
-                dptbpr:
-                  type: number
-                tdksah:
-                  type: number
-                hpdislk:
-                  type: number
-                dptblk:
-                  type: number
+                  description: jumlah data pemilih tetap laki-laki. data telah disiapkan dispenduk sebelum pemilihan di tps
                 dptpr:
                   type: number
+                  description: jumlah data pemilih tetap perempuan. data telah disiapkan dispenduk sebelum pemilihan di tps
+                dptblk:
+                  type: number
+                  description: jumlah data pemilih tetap laki-laki tambahan. data ada perubahan setelah penetapan jumlah dispenduk sebelum pemilihan di tps
+                dptbpr:
+                  type: number
+                  description: jumlah data pemilih tetap perempuan tambahan. data ada perubahan setelah penetapan jumlah dispenduk sebelum pemilihan di tps
+                dpklk:
+                  type: number
+                  description: 'jumlah data pemilih kusus laki-laki. data tidak ada di penetapan dispenduk maupun perubahan, sehingga ditambah secara kusus. jumlahnya diperkirakan tidak lebih 2%'
+                dpkpr:
+                  type: number
+                  description: 'jumlah data pemilih kusus perempuan. data tidak ada di penetapan dispenduk maupun perubahan, sehingga ditambah secara kusus. jumlahnya diperkirakan tidak lebih 2%'
+                dpdislk:
+                  type: number
+                  description: jumlah data pemilih disabilitas laki-laki. data ditetapkan oleh dispenduk sebelum pencoblosan
+                dpdispr:
+                  type: number
+                  description: jumlah data pemilih disabilitas perempuan. data ditetapkan oleh dispenduk sebelum pencoblosan
+                hptlk:
+                  type: number
+                  description: jumlah dptlk yang menggunakan hak pilihnya(mendatangi tps/nyoblos)
+                hptpr:
+                  type: number
+                  description: jumlah dptpr yang menggunakan hak pilihnya(mendatangi tps/nyoblos)
+                hptblk:
+                  type: number
+                  description: jumlah dptblk yang menggunakan hak pilihnya(mendatangi tps/nyoblos)
+                hptbpr:
+                  type: number
+                  description: jumlah dptbpr yang menggunakan hak pilihnya(mendatangi tps/nyoblos)
+                hpkpr:
+                  type: number
+                  description: jumlah dpkpr yang menggunakan hak pilihnya(mendatangi tps/nyoblos)
+                hpklk:
+                  type: number
+                  description: jumlah dpklk yang menggunakan hak pilihnya(mendatangi tps/nyoblos)
+                hpdislk:
+                  type: number
+                  description: jumlah dpdislk yang menggunakan hak pilihnya(mendatangi tps/nyoblos)
+                hpdispr:
+                  type: number
+                  description: jumlah dpdispr yang menggunakan hak pilihnya(mendatangi tps/nyoblos)
+                suararusak:
+                  type: number
+                  description: 'jumlah surat suara yang tiba dari pusat, ketika tiba di tps ada yang rusak'
+                suara:
+                  type: string
+                  minLength: 1
+                  description: 'array hasil coblosan sah misal [34, 25] 34 suara untuk paslon pertama dan 25 suara untuk paslon kedua. jumlahnya harus sama berturut turut dengan pil1 dan pil2'
+                pil1:
+                  type: number
+                  description: jumlah suara sah paslon pertama
+                pil2:
+                  type: number
+                  description: jumlah suara sah paslon kedua
+                tdksah:
+                  type: number
+                  description: jumlah suara tidak sah. artinya pencoblos melakukan kesalahan saat memilih
               required:
-                - hptpr
-                - hptbpr
+                - kodepet
+                - dptlk
+                - dptpr
+                - dptblk
+                - dptbpr
+                - dpklk
+                - dpkpr
                 - dpdislk
                 - dpdispr
                 - hptlk
+                - hptpr
+                - hptblk
+                - hptbpr
+                - hpkpr
+                - hpklk
+                - hpdislk
+                - hpdispr
+                - suararusak
                 - suara
                 - pil1
                 - pil2
-                - hpkpr
-                - dpklk
-                - hpklk
-                - suararusak
-                - hptblk
-                - kodepet
-                - hpdispr
-                - dptlk
-                - dpkpr
-                - dptbpr
                 - tdksah
-                - hpdislk
-                - dptblk
-                - dptpr
             examples:
               example-1:
                 value:
@@ -122,7 +151,16 @@ paths:
             schema:
               type: object
               properties: {}
-        description: ''
+        description: |-
+          API ini digunakan untuk menambah data formC1 per petugas TPS.
+          parameter dimulai dari kodepet, dptlk, dan seterusnya sampai tdksah.
+          format pengiriman POST dalam bentuk JSON.
+          data dptlk, dptpr, dptblk, dptbpr, dpklk, dpkpr, dpdislk, dpdispr 
+          data ini didapat dari API /session.php
+
+          response dari API /session.php, berisi  calon dan haksurat. 
+          item "haksurat" berisi dptlk, dptpr, dptblk, dptbpr, dpklk, dpkpr, dpdislk, dpdispr.
+          item "calon" berisi urutan calon dan namanya
     put:
       summary: ''
       operationId: put-savepost.php
