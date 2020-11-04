@@ -282,7 +282,7 @@ paths:
                         description: 'data tps daftar pemilih tetap disabilitas laki-laki, sudah ada sebelum pencoblosan'
                       totsurat:
                         type: number
-                        description: total surat suara dari kpu pusat (jumlahnya sama dengan total semua diatas)
+                        description: total surat suara dari kpu pusat (jumlahnya sama dengan total semua item-item ini)
                 required:
                   - calon
                   - haksurat
