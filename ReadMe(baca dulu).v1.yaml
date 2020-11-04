@@ -287,6 +287,9 @@ paths:
                   - calon
                   - haksurat
       operationId: post-session.php
-      description: ''
+      description: |-
+        return berupa cookies dan respons body berupa json
+        cookies berisi informasi session id php, nama yang login, dan idpetugas
+        sedangkan response body berupa informasi awal formc1
 components:
   schemas: {}
