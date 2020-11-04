@@ -205,54 +205,27 @@ paths:
                     uniqueItems: true
                     minItems: 1
                     items:
-                      required:
-                        - id
-                        - nama
-                        - pathgbr
+                      type: object
                       properties:
                         id:
                           type: string
                           minLength: 1
+                          description: id urutan calon
                         nama:
                           type: string
                           minLength: 1
+                          description: nama calon
                         ket: {}
                         pathgbr:
                           type: string
                           minLength: 1
+                          description: alamat gambar calon
+                      required:
+                        - id
+                        - nama
+                        - pathgbr
                   haksurat:
                     type: object
-                    properties:
-                      idpetugas:
-                        type: string
-                        minLength: 1
-                      nama:
-                        type: string
-                        minLength: 1
-                      kode:
-                        type: string
-                        minLength: 1
-                      namatps:
-                        type: string
-                        minLength: 1
-                      dummy_pildpt_lk:
-                        type: number
-                      dummy_pildpt_pr:
-                        type: number
-                      dummy_pildptb_lk:
-                        type: number
-                      dummy_pildptb_pr:
-                        type: number
-                      dummy_pildpk_lk:
-                        type: number
-                      dummy_pildpk_pr:
-                        type: number
-                      dummy_disab_data_lk:
-                        type: number
-                      dummy_disab_data_pr:
-                        type: number
-                      totsurat:
-                        type: number
                     required:
                       - idpetugas
                       - nama
@@ -267,6 +240,49 @@ paths:
                       - dummy_disab_data_lk
                       - dummy_disab_data_pr
                       - totsurat
+                    properties:
+                      idpetugas:
+                        type: string
+                        minLength: 1
+                        description: 'idpetugas yang login, keterangan sama dengan endpoint /savepost.php'
+                      nama:
+                        type: string
+                        minLength: 1
+                        description: nama petugas login
+                      kode:
+                        type: string
+                        minLength: 1
+                        description: kode tps
+                      namatps:
+                        type: string
+                        minLength: 1
+                      dummy_pildpt_lk:
+                        type: number
+                        description: 'data tps daftar pemilih tetap laki-laki, sudah ada sebelum pencoblosan'
+                      dummy_pildpt_pr:
+                        type: number
+                        description: 'data tps daftar pemilih tetap laki-laki, sudah ada sebelum pencoblosan'
+                      dummy_pildptb_lk:
+                        type: number
+                        description: 'data tps daftar pemilih tambahan laki-laki, sudah ada sebelum pencoblosan'
+                      dummy_pildptb_pr:
+                        type: number
+                        description: 'data tps daftar pemilih tambahan laki-laki, sudah ada sebelum pencoblosan'
+                      dummy_pildpk_lk:
+                        type: number
+                        description: 'data tps daftar pemilih kusus/langsung laki-laki, sudah ada sebelum pencoblosan'
+                      dummy_pildpk_pr:
+                        type: number
+                        description: 'data tps daftar pemilih kusus/langsung perempuan, sudah ada sebelum pencoblosan'
+                      dummy_disab_data_lk:
+                        type: number
+                        description: 'data tps daftar pemilih tetap disabilitas laki-laki, sudah ada sebelum pencoblosan'
+                      dummy_disab_data_pr:
+                        type: number
+                        description: 'data tps daftar pemilih tetap disabilitas laki-laki, sudah ada sebelum pencoblosan'
+                      totsurat:
+                        type: number
+                        description: total surat suara dari kpu pusat (jumlahnya sama dengan total semua diatas)
                 required:
                   - calon
                   - haksurat
