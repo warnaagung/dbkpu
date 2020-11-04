@@ -235,21 +235,21 @@ paths:
                       namatps:
                         type: string
                         minLength: 1
-                      dummy_hakdpt_lk:
+                      dummy_pildpt_lk:
                         type: number
-                      dummy_hakdpt_pr:
+                      dummy_pildpt_pr:
                         type: number
-                      dummy_hakdptb_lk:
+                      dummy_pildptb_lk:
                         type: number
-                      dummy_hakdptb_pr:
+                      dummy_pildptb_pr:
                         type: number
-                      dummy_hakdpk_lk:
+                      dummy_pildpk_lk:
                         type: number
-                      dummy_hakdpk_pr:
+                      dummy_pildpk_pr:
                         type: number
-                      dummy_disab_hak_lk:
+                      dummy_disab_data_lk:
                         type: number
-                      dummy_disab_hak_pr:
+                      dummy_disab_data_pr:
                         type: number
                       totsurat:
                         type: number
@@ -258,14 +258,14 @@ paths:
                       - nama
                       - kode
                       - namatps
-                      - dummy_hakdpt_lk
-                      - dummy_hakdpt_pr
-                      - dummy_hakdptb_lk
-                      - dummy_hakdptb_pr
-                      - dummy_hakdpk_lk
-                      - dummy_hakdpk_pr
-                      - dummy_disab_hak_lk
-                      - dummy_disab_hak_pr
+                      - dummy_pildpt_lk
+                      - dummy_pildpt_pr
+                      - dummy_pildptb_lk
+                      - dummy_pildptb_pr
+                      - dummy_pildpk_lk
+                      - dummy_pildpk_pr
+                      - dummy_disab_data_lk
+                      - dummy_disab_data_pr
                       - totsurat
                 required:
                   - calon
