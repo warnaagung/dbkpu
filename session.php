@@ -1,5 +1,4 @@
 <?php
-
 header("content-type:application/json");
 require_once "clsdb.php";
  
@@ -26,9 +25,9 @@ $stmt->execute([$isi["uname"], $isi["upass"]]);
 if($baris=$stmt->fetch()){
     session_name("kpu");
     session_start();
-    $_SESSION["idpet"]=$baris["idpetugas"];
+    $_SESSION["idpetugas"]=$baris["idpetugas"];
     $_SESSION["nama"]=$baris["nama"];
-    setcookie("petugas", $_SESSION["idpet"], time() + (86400 * 30), "/");
+    setcookie("idpetugas", $_SESSION["idpetugas"], time() + (86400 * 30), "/");
     setcookie("nama", $_SESSION["nama"], time() + (86400 * 30), "/");
     $stmt2 = $pdo->prepare("SELECT * FROM calon");
     $stmt2->execute();
@@ -44,7 +43,7 @@ if($baris=$stmt->fetch()){
             }
         array_push($calon, $presiden);
     }
-    echo json_encode(["calon" => $calon, "haksurat" => json_encode(getDummyC1($pdo, substr($_SESSION["idpet"], 0,12) )) ]);
+    echo json_encode(["calon" => $calon, "haksurat" => json_encode(getDummyC1($pdo, substr($_SESSION["idpetugas"], 0,12) )) ]);
 }
 else{
     $stmt->debugDumpParams();
