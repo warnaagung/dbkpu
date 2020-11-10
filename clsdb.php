@@ -1,8 +1,9 @@
 <?php
-$namadb = "dbmasuk";
-$dsn = "mysql:host=localhost;dbname=dbmasuk";
-$user = "warnaagung";
-$passwd = "cahyono";
+if(!(isset($host) && isset($namadb) && isset($user) && isset($user))){
+    require_once "clsdbinidbmasuk.php";
+}
+
+$dsn = "mysql:host=" . $host . ";dbname=" . $namadb;
 
 $pdo = new PDO($dsn, $user, $passwd);
 

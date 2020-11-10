@@ -16,8 +16,26 @@
 CREATE DATABASE IF NOT EXISTS `dbchain` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `dbchain`;
 
--- membuang struktur untuk table dbchain.chain
-CREATE TABLE IF NOT EXISTS `chain` (
+-- membuang struktur untuk table dbchain.chain0
+CREATE TABLE IF NOT EXISTS `chain0` (
+  `id` varchar(20) NOT NULL,
+  `previd` varchar(20) DEFAULT NULL,
+  `prevhash` varchar(128) DEFAULT NULL,
+  `nonce` int(11) DEFAULT NULL,
+  `konten` mediumtext DEFAULT NULL,
+  `idpengguna` varchar(15) DEFAULT NULL,
+  `idtps` varchar(20) DEFAULT NULL,
+  `hashnow` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
+-- Membuang data untuk tabel dbchain.chain0: ~0 rows (lebih kurang)
+DELETE FROM `chain0`;
+/*!40000 ALTER TABLE `chain0` DISABLE KEYS */;
+/*!40000 ALTER TABLE `chain0` ENABLE KEYS */;
+
+-- membuang struktur untuk table dbchain.chain1
+CREATE TABLE IF NOT EXISTS `chain1` (
   `id` varchar(20) NOT NULL,
   `previd` varchar(20) DEFAULT NULL,
   `prevhash` varchar(128) DEFAULT NULL,
@@ -29,10 +47,10 @@ CREATE TABLE IF NOT EXISTS `chain` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Membuang data untuk tabel dbchain.chain: ~0 rows (lebih kurang)
-DELETE FROM `chain`;
-/*!40000 ALTER TABLE `chain` DISABLE KEYS */;
-/*!40000 ALTER TABLE `chain` ENABLE KEYS */;
+-- Membuang data untuk tabel dbchain.chain1: ~0 rows (lebih kurang)
+DELETE FROM `chain1`;
+/*!40000 ALTER TABLE `chain1` DISABLE KEYS */;
+/*!40000 ALTER TABLE `chain1` ENABLE KEYS */;
 
 -- membuang struktur untuk table dbchain.chain2
 CREATE TABLE IF NOT EXISTS `chain2` (
