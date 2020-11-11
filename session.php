@@ -1,6 +1,7 @@
 <?php
 header("content-type:application/json");
 require_once "clsdb.php";
+$pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
  
 //Make sure that it is a POST request.
 if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
@@ -23,12 +24,13 @@ $stmt = $pdo->prepare("SELECT * FROM pengguna where idpetugas=? and password=?")
 $stmt->execute([$isi["uname"], $isi["upass"]]); 
 //$data = $stmt->fetchAll();
 if($baris=$stmt->fetch()){
-    session_name("kpu");
     session_start();
     $_SESSION["idpetugas"]=$baris["idpetugas"];
     $_SESSION["nama"]=$baris["nama"];
     setcookie("idpetugas", $_SESSION["idpetugas"], time() + (86400 * 30), "/");
     setcookie("nama", $_SESSION["nama"], time() + (86400 * 30), "/");
+    setcookies("session_id", session_id(), time() + (86400 * 30), "/");
+    
     $stmt2 = $pdo->prepare("SELECT * FROM calon");
     $stmt2->execute();
     $alldata=$stmt2->fetchAll(PDO::FETCH_ASSOC);
@@ -38,7 +40,7 @@ if($baris=$stmt->fetch()){
         $presiden=array();
         foreach($dt as $k=>$v)
             if($k != "gambar"){
-                $presiden[$k]=$v;
+                $presiden[$k]=(is_int($v))?intval($v):$v;
                 //print_r($presiden);
             }
         array_push($calon, $presiden);

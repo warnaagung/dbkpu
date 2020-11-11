@@ -1,5 +1,6 @@
 <?php
     require_once "clsdb.php";
+    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     
     $jml=0;
     $offset=0;
@@ -34,7 +35,7 @@
         foreach($data as $baris){ 
             $arbaris=array();
             foreach($baris as $x => $val){
-                $arbaris[$x]=$val;
+                $arbaris[$x]=(is_int($val))?intval($val):$val;
                 
             }
             if($imsk==0){

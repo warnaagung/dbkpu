@@ -1,5 +1,5 @@
 <?php
 $host="localhost";
-$namadb = "dbmasuk";
+$namadb = "dbmasuk2";
 $user = "warnaagung";
 $passwd = "cahyono";

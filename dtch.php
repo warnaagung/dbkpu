@@ -1,7 +1,7 @@
 <?php
     require_once "clsdbinidbchain.php";
     require_once "clsdb.php";
-    
+    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     $jml=0;
     $offset=0;
 
@@ -37,9 +37,9 @@
             $arbaris=array();
             foreach($baris as $x => $val){
                 if($x=="konten")
-                $arbaris[$x]=json_decode($val);
+                    $arbaris[$x]=json_decode($val);
                 else
-                    $arbaris[$x]=$val;
+                    $arbaris[$x]=(is_int($val))?intval($val):$val;
                 
             }
             if($imsk==0){
